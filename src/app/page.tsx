@@ -153,8 +153,8 @@ export default function Home() {
         // 질문 임베딩
         const queryEmbedding = await createEmbedding(apiKey, content);
 
-        // 유사 청크 검색
-        const searchResults = await searchSimilarChunks(queryEmbedding, 5, 0.3);
+        // 유사 청크 검색 (threshold 낮춤)
+        const searchResults = await searchSimilarChunks(queryEmbedding, 5, 0.1);
 
         // 컨텍스트 생성
         const context: ChunkReference[] = searchResults.map((r) => ({
